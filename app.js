@@ -13,12 +13,17 @@ var passport = require('./lib/passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var cors = require('cors');
 
 var app = express();
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cors({
+  origin: ['http://localhost:5000'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
