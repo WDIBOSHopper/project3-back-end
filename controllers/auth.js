@@ -70,7 +70,8 @@ module.exports = {
             pUser.then(function(user) {
                 return user.setPassword(req.body.password);
             }).then(function() {
-                res.sendStatus(200);
+                res.setHeader('Content-Type', 'application/json');
+                res.status(200).json({ message: "You have been registered"});
             }).catch(function(err) {
                 next(err);
             });

@@ -21,7 +21,7 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(cors({
-  origin: ['http://localhost:5000'],
+  origin: 'http://localhost:5000',
   credentials: true
 }));
 app.use(bodyParser.json());
