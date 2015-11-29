@@ -16,8 +16,10 @@ var postSchema = new mongoose.Schema({
     type: String,
     required: true
     },
-  });
+  page: [{ type: Schema.Types.ObjectId, ref: 'Page' }]
+ });
 
 var Post = mongoose.model('Post', postSchema);
+var Page = mongoose.model('Page', pageSchema);
 
 module.exports = Post;
