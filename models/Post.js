@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var pageSchema = require('./Page.js');
 var postSchema = new mongoose.Schema({
@@ -19,6 +20,8 @@ var postSchema = new mongoose.Schema({
     },
   page: [{ type: Schema.Types.ObjectId, ref: 'Page' }]
  });
+
+postSchema.plugin(uniqueValidator);
 
 var Post = mongoose.model('Post', postSchema);
 var Page = mongoose.model('Page', pageSchema);

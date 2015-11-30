@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var uniqueValidator = require('mongoose-unique-validator');
 
 var userSchema = require("./User.js");
 
@@ -16,12 +17,14 @@ var pageSchema = new mongoose.Schema({
   },
   url: {
     type: String,
+    unique : true,
     required: true
   },
   user_id: [{ type: String, ref: 'User'}]
 
 });
 
+pageSchema.plugin(uniqueValidator);
 var Page = mongoose.model('Page', pageSchema);
 var User = mongoose.model('User', userSchema);
 
