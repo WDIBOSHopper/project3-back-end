@@ -24,13 +24,17 @@ var create = function(title, content, url, user_id) {
 };
 
 db.once('open', function(){
-  var title = process.argv[2];
-  var content = process.argv[3];
-  var url = process.argv[4];
-  var user_id = process.argv[5];
-  var page = create(title, content, url, user_id);
-  // console.log(page.populate('user_id'));
-  // console.log(Page.find({'title': "hello"}).populate('user_id'));
+  // var title = process.argv[2];
+  // var content = process.argv[3];
+  // var url = process.argv[4];
+  // var user_id = process.argv[5];
+  // var page = create(title, content, url, user_id);
+  var owner2 = Page.findOne({title: "newPage"}).populate('owner', 'userName').exec(function (err, page) {
+      if (err) return handleError(err);
+      console.log(page.owner);
+      console.log('The username is %s', page.owner[0].userName);
+}).then(done);
+  console.log();
 });
 
 // var pages = 
