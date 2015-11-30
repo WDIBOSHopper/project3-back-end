@@ -13,7 +13,8 @@ var userSchema = new Schema({
 		required : true
 	},
 	email: String,
-	passwordDigest : String
+	passwordDigest : String,
+	pages : [{ type: Schema.Types.ObjectId, ref: 'Page' }]
 });
 
 userSchema.plugin(uniqueValidator);

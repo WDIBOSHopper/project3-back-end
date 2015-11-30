@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
-
+var Schema = mongoose.Schema;
+var pageSchema = require('./Page.js');
 var postSchema = new mongoose.Schema({
   date: {
     type: Date,
