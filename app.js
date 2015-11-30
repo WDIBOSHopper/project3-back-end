@@ -10,9 +10,11 @@ process.env.SESSION_SECRET || require('dotenv').load();
 // require passport
 // require passport config file
 var passport = require('./lib/passport');
-
+// routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
+
 var cors = require('cors');
 
 var app = express();
@@ -52,6 +54,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
