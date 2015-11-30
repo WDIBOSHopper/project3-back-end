@@ -1,6 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var userSchema = require("./User.js");
 
 var pageSchema = new mongoose.Schema({
   title: {
@@ -15,7 +18,7 @@ var pageSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  user: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  user_id: [{ type: String, ref: 'User'}]
 
 });
 

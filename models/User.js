@@ -12,6 +12,7 @@ var userSchema = new Schema({
 		unique : true,
 		required : true
 	},
+	email: String,
 	passwordDigest : String
 });
 
