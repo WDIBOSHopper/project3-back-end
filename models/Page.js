@@ -20,7 +20,8 @@ var pageSchema = new mongoose.Schema({
     unique : true,
     required: true
   },
-  user_id: [{ type: String, ref: 'User'}]
+  owner: [{ type: String, ref: 'User'}],
+  posts : [{ type: Schema.Types.ObjectId, ref: 'Post' }]
 
 });
 

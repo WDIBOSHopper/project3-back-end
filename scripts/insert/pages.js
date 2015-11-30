@@ -15,7 +15,7 @@ var create = function(title, content, url, user_id) {
     'title': title, 
     'content': content,
     'url': url,
-    'user_id': user_id   
+    'owner': user_id   
   }).then(function(page) {
     console.log(page);
   }).catch(function(error){
