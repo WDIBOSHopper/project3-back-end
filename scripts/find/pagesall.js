@@ -10,8 +10,7 @@ var done = function() {
 };
 
 var showPage = function(user_id) {
-  console.log(user_id);
-  Page.findOne({'user_id': user_id})
+  Page.find({'owner': user_id})
   .exec()
   .then(function(page) {
     console.log("THIS BLOG LIST IS FOR A SINGLE USER");
