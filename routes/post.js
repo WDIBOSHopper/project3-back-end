@@ -3,8 +3,10 @@ var router = express.Router();
 var postController = require('../controllers/postController');
 
 router.get('/', postController.showAllPosts);
+// works - tested in Postman
 
 router.get('/:id', postController.showOnePost);
+// works - tested in Postman
 
 router.post('/', postController.createPost);
 

@@ -26,11 +26,9 @@ var postController = {
     });
   },
 
-  createPost : function(req, res, next) {
-
+   createPost : function(req, res, next) {
     var postCreatePromise = new Promise(function(res, rej) {
       Post.create({
-        date: req.body.date,
         title: req.body.title,
         entry: req.body.entry,
         page: req.body.page,
@@ -48,7 +46,7 @@ var postController = {
     postCreatePromise.then(function() {
       res.sendStatus(200);
     }).catch(function(error) {
-      next(error);
+      res.send('Invalid Entry. Please Try Creating a Post Again.');
     });
   },
 
@@ -56,7 +54,6 @@ var postController = {
 
     var postUpdatePromise = new Promise(function(res, rej) {
       Post.update({
-        date: req.body.date,
         title: req.body.title,
         entry: req.body.entry,
         page: req.body.page,
