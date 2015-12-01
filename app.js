@@ -14,6 +14,8 @@ var passport = require('./lib/passport');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
+var page = require('./routes/page');
+var post = require('./routes/post');
 
 var cors = require('cors');
 
@@ -55,6 +57,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
+app.use('/page', page);
+app.use('/post', post);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
