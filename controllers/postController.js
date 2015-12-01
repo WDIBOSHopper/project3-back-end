@@ -51,27 +51,35 @@ var postController = {
   },
 
   updatePost : function(req, res, next) {
+      var title = req.body.title;
+      var entry = req.body.entry;
+      //res.json({body: req.body});
 
-    var postUpdatePromise = new Promise(function(res, rej) {
-      Post.update({
-        title: req.body.title,
-        entry: req.body.entry,
-        page: req.body.page,
-        owner: req.body.owner
+      var postFindPromise = new Promise(
+        function(resolve, reject) {
+        var selectedPost =  Post.findById(req.params.id, function(error, Post){
+        if (error) {
+          reject(error);
+        }
+        resolve(selectedPost);
+        });
+      });
+
+    var postUpdatePromise = function(selectedPost) {
+      selectedPost.update({
+        title: title,
+        entry: entry
       }, function(error, Post){
         if(error) {
-          rej(error);
           return;
       }
-
-      res(Post);
-
+      res.json(Post);
       });
-    });
-    postUpdatePromise.then(function() {
-      res.sendStatus(200);
-    }).catch(function(error) {
-      next(error);
+    };
+
+    postFindPromise.then(
+    postUpdatePromise).catch(function(error) {
+      res.send('Invalid Entry. Please Try Updating Your Post Again.');
     });
   },
 
