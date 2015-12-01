@@ -10,6 +10,7 @@ var controller = require('../controllers/dashboard')
 
 
 router.route('/')
-  .get(controller.auth);
+  .all(controller.auth)
+  .get(controller.get);
 
 module.exports = router;

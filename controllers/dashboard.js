@@ -1,9 +1,13 @@
 'use strict'
 
-var auth = function(req, res, next){ if (!req.isAuthenticated()) res.send(401); else res.json({message: "You are Authenticated!"}); };
+var auth = function(req, res, next){ if (!req.isAuthenticated()) res.send(401); else {next();} };
 
 var Dashboard = {
-  auth: auth
+  auth: auth,
+
+  get: function(req, res, next){
+    res.json({message: "You are REALLY authenticated! "});
+  }
 };
 
 
