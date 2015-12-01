@@ -17,7 +17,11 @@ var userSchema = new Schema({
 	pages : [{ type: Schema.Types.ObjectId, ref: 'Page' }]
 });
 
+
 userSchema.plugin(uniqueValidator);
+userSchema.virtual('url').get(function(){
+	return userName + '/';
+});
 
 userSchema.methods.comparePassword = function(password) {
 	var self = this;
