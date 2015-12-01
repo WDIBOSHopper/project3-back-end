@@ -76,13 +76,14 @@ var postController = {
   },
 
   deletePost : function(req, res, error) {
-    Post.findByIdAndRemove({_id : req.params.id});
-    if (error){
-      console.error(error);
-    }
-    res.sendStatus(200);
-  }
+    Post.findByIdAndRemove({_id : req.params.id}).exec().then(function(){
+      res.json({message: "BALETED"});
+    })
+    .catch(function(err){
+      res.json({error: error});
+    });
 
+  }
 };
 
 module.exports = postController;
