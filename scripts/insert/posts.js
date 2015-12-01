@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/mongoose-crud');
+mongoose.connect('mongodb://localhost/mongo-crud');
 var db = mongoose.connection;
 
 var Post = require('../../models/Post.js');
@@ -10,11 +10,13 @@ var done = function() {
   db.close();
 };
 
-var create = function(title, entry, page_id) {
+var create = function(title, entry, page_id, user_id
+  ) {
   Post.create({
     'title': title,
     'entry': entry,
-    'page_id': page_id    
+    'page': page_id,
+    'owner': user_id
   }).then(function(post) {
     console.log(post);
   }).catch(function(error){
@@ -26,7 +28,8 @@ db.once('open', function(){
   var title = process.argv[2];
   var entry = process.argv[3];
   var page_id = process.argv[4];
-  var page = create(title, entry, page_id);
+  var user_id = process.argv[5];
+  var page = create(title, entry, page_id, user_id);
 });
 
 // var posts = [  {
