@@ -38,13 +38,14 @@ var pageController = {
           rej(error);
           return;
       }
-
       res(Page);
 
       });
     });
-    pageCreatePromise.then(function() {
-      res.sendStatus(200);
+    pageCreatePromise.then(function(page) {
+      res.setStatus(201);
+      res.send(page);
+
     }).catch(function(error) {
       res.status(500);
       res.send('Invalid Entry. Please Try Creating a Page Again.');
