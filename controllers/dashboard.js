@@ -19,31 +19,31 @@ var done = function() {
 var auth = function(req, res, next){ if (!req.isAuthenticated()) res.send(401); else {return next();} };
 
 
-var showPage = function(user_id) {
-  Page.find({'owner': user_id})
-  .exec()
-  .then(function(page) {
-    console.log("THIS PAGE LIST IS FOR A SINGLE USER");
-    console.log(page);
+// var showPage = function(user_id) {
+//   Page.find({'owner': user_id})
+//   .exec()
+//   .then(function(page) {
+//     console.log("THIS PAGE LIST IS FOR A SINGLE USER");
+//     console.log(page);
     
-  }).catch(function(error){
-    console.error(error);
-  })
-};
+//   }).catch(function(error){
+//     console.error(error);
+//   })
+// };
 
-var showPost = function(user_id) {
-  Post.find({'owner': user_id})
-  .exec()
-  .then(function(post) {
-    console.log("THIS POST LIST IS FOR A SINGLE USER");
-    console.log(post);
-  }).catch(function(error){
-    console.error(error);
-  }).then(done)
-  .then(function(post){
-    return post;
-  });
-};
+// var showPost = function(user_id) {
+//   Post.find({'owner': user_id})
+//   .exec()
+//   .then(function(post) {
+//     console.log("THIS POST LIST IS FOR A SINGLE USER");
+//     console.log(post);
+//   }).catch(function(error){
+//     console.error(error);
+//   })
+//   .then(function(post){
+//     return post;
+//   });
+// };
 
 // var promiseChain = Page.find({'owner': user_id})
 //   .exec()
