@@ -13,7 +13,7 @@ var postController = {
       if (error) {
         console.error(error);
       };
-      res.json(Posts);
+      res.json({posts: Posts});
     });
   },
 
