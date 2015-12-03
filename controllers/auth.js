@@ -69,9 +69,9 @@ module.exports = {
             });
             pUser.then(function(user) {
                 return user.setPassword(req.body.password);
-            }).then(function() {
+            }).then(function(user) {
                 res.setHeader('Content-Type', 'application/json');
-                res.status(200).json({ message: "You have been registered"});
+                res.status(200).json({ user: user});
             }).catch(function(err) {
                 next(err);
             });
