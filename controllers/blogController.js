@@ -8,7 +8,7 @@ var User = mongoose.model("User");
 
 var blogController = {
   // get: function(req, res){
-  //   User.find({'username': req.params.username})
+  //   User.find({'userName': req.params.username})
   //   .exec()
   //   .then(function(user){
   //     console.log(user)
@@ -24,7 +24,7 @@ var blogController = {
   //   });
   // }
   get: function(req, res){
-    res.json({message: "It's still a route!"});
+    res.json({message: req.params.username});
   }
 };
 
