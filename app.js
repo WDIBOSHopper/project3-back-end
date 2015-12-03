@@ -62,8 +62,8 @@ app.use('/users', users);
 app.use('/dashboard', dashboard);
 app.use('/page', page);
 app.use('/post', post);
-app.use('/:username', blogController.get);
-
+//app.use('/:username', blogController.get);
+app.use('/:userId', blogController.getByUserId);
 
 
 // catch 404 and forward to error handler
