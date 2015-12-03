@@ -73,6 +73,7 @@ module.exports = {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json({ user: user});
             }).catch(function(err) {
+                console.log(err.stack);
                 next(err);
             });
         }
