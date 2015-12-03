@@ -16,6 +16,7 @@ var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
 var page = require('./routes/page');
 var post = require('./routes/post');
+var blogRoute = require('./routes/blogRoute');
 
 var cors = require('cors');
 
@@ -59,6 +60,7 @@ app.use('/users', users);
 app.use('/dashboard', dashboard);
 app.use('/page', page);
 app.use('/post', post);
+app.use('/:username', blogRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
