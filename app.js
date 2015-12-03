@@ -27,7 +27,7 @@ var app = express();
 app.use(logger('dev'));
 //cors configuration
 app.use(cors({
-  origin: 'https://fierce-sea-5348.herokuapp.com/',
+  origin: 'http://localhost:5000',
   credentials: true
 }));
 app.use(bodyParser.json());
