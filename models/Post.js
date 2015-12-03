@@ -7,9 +7,9 @@ var pageSchema = require('./Page.js');
 var userSchema = require('./User.js');
 var postSchema = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now
+    default: new Date(Date.now).toLocaleString()
   },
   title: {
     type: String,
