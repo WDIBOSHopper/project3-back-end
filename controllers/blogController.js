@@ -1,8 +1,9 @@
 'use strict';
 
 var mongoose = require("../models/index");
-var userSchema = require('./User.js');
-var pageSchema = require('./Page.js');
+
+var Post = mongoose.model("Post");
+
 
 var blogController = {
   get: function(){}
