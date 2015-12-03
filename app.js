@@ -53,6 +53,8 @@ app.use(session({
 app.use(passport.initialize());
 
 // mount return value of `passport.session` invocation on `app`
+var blogController = require('./controllers/blogController');
+
 app.use(passport.session());
 
 app.use('/', routes);
@@ -60,7 +62,9 @@ app.use('/users', users);
 app.use('/dashboard', dashboard);
 app.use('/page', page);
 app.use('/post', post);
-app.use('/:username', blogRoute);
+app.use('/:username', blogController.get);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
