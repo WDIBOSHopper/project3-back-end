@@ -13,7 +13,7 @@ var postController = {
       if (error) {
         console.error(error);
       };
-      res.json({posts: Posts});
+      res.status(200).json({posts: Posts});
     });
   },
 
@@ -22,7 +22,7 @@ var postController = {
       if (error) {
         console.error(error);
       }
-      res.json(Post);
+      res.status(200).json(Post);
     });
   },
 
@@ -35,16 +35,16 @@ var postController = {
         owner: req.body.owner
       }, function(error, Post){
         if(error) {
-          rej(error);
+          rej({error: error});
           return;
       }
 
-      res.json(Post);
+      res(Post);
 
       });
     });
-    postCreatePromise.then(function() {
-      res.sendStatus(200);
+    postCreatePromise.then(function(post) {
+      res.status(201).json(post);
     }).catch(function(error) {
       res.send('Invalid Entry. Please Try Creating a Post Again.');
     });
