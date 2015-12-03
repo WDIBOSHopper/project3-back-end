@@ -33,22 +33,22 @@ var pageController = {
         content: req.body.content,
         url: req.body.url,
         owner: req.body.owner
-      }, function(error, Page){
+      }, function(error, page){
         if(error) {
           rej(error);
           return;
       }
-      res(Page);
+      res(page);
 
       });
     });
     pageCreatePromise.then(function(page) {
-      res.setStatus(201);
-      res.send(page);
+      res.status(201);
+      res.json({page: page});
 
     }).catch(function(error) {
       res.status(500);
-      res.send('Invalid Entry. Please Try Creating a Page Again.');
+      res.send(error.stack);
     });
   },
 
