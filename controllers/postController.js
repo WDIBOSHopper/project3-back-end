@@ -31,7 +31,6 @@ var postController = {
       Post.create({
         title: req.body.title,
         entry: req.body.entry,
-        page: req.body.page,
         owner: req.body.owner
       }, function(error, Post){
         if(error) {
