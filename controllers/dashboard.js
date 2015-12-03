@@ -68,6 +68,7 @@ var Dashboard = {
 
     var postsPromise = Post.find({'owner': userId})
     .exec();
+    
       Promise.all([pagesPromise, postsPromise]).then(function(pagesAndPostsResults) { 
         var pages = pagesAndPostsResults[0];
         var posts = pagesAndPostsResults[1];
