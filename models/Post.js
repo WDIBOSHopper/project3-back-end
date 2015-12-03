@@ -11,7 +11,7 @@ var postSchema = new mongoose.Schema({
     required: true,
     default: function(){
       return new Date(Date.now).toLocaleString();
-    } 
+    }
   },
   title: {
     type: String,
@@ -21,7 +21,6 @@ var postSchema = new mongoose.Schema({
     type: String,
     required: true
     },
-  page: [{ type: Schema.Types.ObjectId, ref: 'Page' }],
   owner: [{ type: Schema.Types.ObjectId, ref: 'User'}]
  });
 
