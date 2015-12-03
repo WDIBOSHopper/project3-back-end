@@ -14,7 +14,10 @@ var userSchema = new Schema({
 	},
 	// email: String,
 	passwordDigest : String,
-	pages : [{ type: Schema.Types.ObjectId, ref: 'Page' }]
+	pages : {
+		type: [Schema.Types.ObjectId],
+		ref: 'Page'
+	}
 });
 
 

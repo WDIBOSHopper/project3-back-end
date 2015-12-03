@@ -39,7 +39,7 @@ var postController = {
           return;
       }
 
-      res(Post);
+      res.json(Post);
 
       });
     });

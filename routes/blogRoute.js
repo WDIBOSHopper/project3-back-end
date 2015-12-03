@@ -3,8 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 var blogController = require('../controllers/blogController');
 
-router.get('/:post', function(req, res){ res.json({username: req.params});
-});
+router.get('/:userId', blogController.getByUserId);
 
 
 module.exports = router;

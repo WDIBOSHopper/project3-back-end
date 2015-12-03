@@ -9,7 +9,9 @@ var postSchema = new mongoose.Schema({
   date: {
     type: String,
     required: true,
-    default: new Date(Date.now).toLocaleString()
+    default: function(){
+      return new Date(Date.now).toLocaleString();
+    } 
   },
   title: {
     type: String,
