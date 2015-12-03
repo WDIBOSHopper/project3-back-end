@@ -3,7 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 var blogController = require('../controllers/blogController');
 
-router.get('/', function(req, res){res.json("it's a real route!");});
+router.get('/', blogController.get);
 
 
 module.exports = router;
