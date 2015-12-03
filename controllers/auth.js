@@ -17,7 +17,8 @@ module.exports = {
    login: {
         post : passport.authenticate('local'),
         all : function(req, res) {
-            res.sendStatus(200);
+            res.status(200);
+            res.send(req.user);
         }
     },
     logout : {
@@ -45,7 +46,7 @@ module.exports = {
                     res.sendStatus(200);
                 }).catch(function(err) {
                     next(err);
-                });            
+                });
         }
     },
     signup : {
