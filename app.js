@@ -27,7 +27,7 @@ var app = express();
 app.use(logger('dev'));
 //cors configuration
 app.use(cors({
-  origin: 'http://localhost:5000',
+  origin: ['http://localhost:5000', 'http://WDIBOSHopper.github.io/project3-front-end'],
   credentials: true
 }));
 app.use(bodyParser.json());
@@ -37,10 +37,10 @@ app.use(session({
 	resave : false,
 	saveUninitialized : false,
 	store : new MongoStore({
-		url : "mongodb://localhost/mongo-crud"
+		url : process.env.MONGOLAB_URI
 	}),
 	cookie : {
-		maxAge : 2000000 // 5 minutes
+		maxAge : 3000000 // 5 minutes
 	},
 	genid : function() {
 		return uuid.v4({
@@ -49,6 +49,8 @@ app.use(session({
 	}
 }));
 
+
+process.env.SESSION_SECRET || require('dotenv').load();
 // mount return value of `passport.initialize` invocation on `app`
 app.use(passport.initialize());
 
