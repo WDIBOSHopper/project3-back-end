@@ -9,12 +9,25 @@ var pageController = {
 
 
   showAllPages : function(req, res) {
-    Page.find(function(error, Pages){
-      if (error) {
-        console.error(error);
-      };
-      res.json(Pages);
-    });
+    if(req.user){
+      var userId = req.user._id;
+      var pagesPromise = Page.find({'owner': userId})
+        .exec();
+
+      pagesPromise.then(function(pages){
+          res.status(200).json({pages: pages});
+        })
+        .catch(function(error){
+          console.log(error.stack);
+        });
+    }else{
+      Page.find(function(error, Pages){
+        if (error) {
+          console.error(error);
+        };
+        res.json(Pages);
+      });
+    }
   },
 
   showOnePage : function(req, res) {
