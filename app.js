@@ -27,7 +27,7 @@ var app = express();
 app.use(logger('dev'));
 //cors configuration
 app.use(cors({
-  origin: ['http://localhost:5000', 'http://wdiboshopper.github.io/project3-front-end'],
+  origin: 'http://wdiboshopper.github.io',
   credentials: true
 }));
 app.use(bodyParser.json());
