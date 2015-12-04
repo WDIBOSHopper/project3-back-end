@@ -9,12 +9,26 @@ var postController = {
 
 
   showAllPosts : function(req, res) {
-    Post.find(function(error, Posts){
-      if (error) {
-        console.error(error);
-      };
-      res.status(200).json({posts: Posts});
-    });
+    if(req.user){
+      var userId = req.user._id;
+      var postsPromise = Post.find({'owner': userId})
+        .exec();
+
+      postsPromise.then(function(posts){
+        res.status(200).json({posts: posts});
+      })
+      .catch(function(error){
+        console.log(error.stack);
+      });
+    } else{
+
+      Post.find(function(error, Posts){
+        if (error) {
+          console.error(error);
+        };
+        res.status(200).json({posts: Posts});
+      });
+    } 
   },
 
   showOnePost : function(req, res) {
