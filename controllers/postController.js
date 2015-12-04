@@ -34,7 +34,8 @@ var postController = {
         owner: req.body.owner
       }, function(error, Post){
         if(error) {
-          rej({error: error});
+          console.log(error.stack)
+          rej({error: error.stack});
           return;
       }
 
