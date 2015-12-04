@@ -48,6 +48,7 @@ var pageController = {
 
     }).catch(function(error) {
       res.status(500);
+      console.log(error.stack)
       res.send(error.stack);
     });
   },
