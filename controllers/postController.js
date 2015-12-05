@@ -28,7 +28,7 @@ var postController = {
         };
         res.status(200).json({posts: Posts});
       });
-    } 
+    }
   },
 
   showOnePost : function(req, res) {
