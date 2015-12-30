@@ -37,7 +37,7 @@ app.use(session({
 	resave : false,
 	saveUninitialized : false,
 	store : new MongoStore({
-		url : process.env.MONGOLAB_URI
+		url : "mongodb://localhost/mongo-crud" //process.env.MONGOLAB_URI
 	}),
 	cookie : {
 		maxAge : 3000000 // 5 minutes
